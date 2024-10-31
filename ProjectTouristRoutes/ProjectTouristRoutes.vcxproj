@@ -131,12 +131,24 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Button.cpp" />
+    <ClCompile Include="FileManager.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="NodePoint.cpp" />
+    <ClCompile Include="NodeRoute.cpp" />
+    <ClCompile Include="Point.cpp" />
+    <ClCompile Include="Route.cpp" />
+    <ClCompile Include="RouteList.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Button.h" />
+    <ClInclude Include="FileManager.h" />
     <ClInclude Include="Map.h" />
+    <ClInclude Include="NodePoint.h" />
+    <ClInclude Include="NodeRoute.h" />
+    <ClInclude Include="Point.h" />
+    <ClInclude Include="Route.h" />
+    <ClInclude Include="RouteList.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
