@@ -1,17 +1,22 @@
 #pragma once
+#include "RouteList.h"
+#include "GraphicPoint.h"
 #include "Button.h"
+using namespace sf;
 
-class Map{
-	sf::RenderWindow* windowOfMap;
-	sf::Event* eventOfWidow;
-	sf::Texture* backgroundTexture;
-	sf::Sprite* backgroundSprite;
+class Map {
+private:
+	RenderWindow* windowOfMap;
+	Event* eventOfWidow;
 
-	sf::Texture* mapTexture;
-	sf::Sprite* mapSprite;
+	Texture* mapTexture;
+	Sprite* mapSprite;
 	float broadOfMap = 1024.0f;
 	float altureOfMap = 768.0f;
 
+	GraphicPoint graphicPoint;
+	RouteList routeList;
+	Route* route;
 	Button button;
 
 public:
@@ -19,8 +24,11 @@ public:
 	~Map();
 	void createDesignOfMap();
 	void manipulateWindow();
+	void sendCoordinate();
+	void checkAddCordinate();
+	void checkRemoveRoute();
+	void setOption();
 	void draw();
-	void run();
-
+	void showWindow();
 };
 

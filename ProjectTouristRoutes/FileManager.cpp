@@ -1,20 +1,19 @@
 #include "FileManager.h"
 
-FileManager::FileManager(){
-
+FileManager::FileManager() {
 }
 
-void FileManager::saveRoute(std::string nameOfFile, RouteList& routeList){
-	std::ofstream file("resources/File/" + nameOfFile + ".txt");
+void FileManager::saveRoute(string nameOfFile, RouteList& routeList) {
+	ofstream file("resources" + nameOfFile + ".txt");
 	if (!file.is_open()) {
 		throw("The file cannot open");
 	}
 	NodeRoute* currentRoute = routeList.getTail();
 	while (currentRoute != nullptr) {
 		NodePoint* currentPoint = currentRoute->getDataRoute()->getTail();
-		file << "Route\n";
+		file << "Route" << endl;
 		while (currentPoint != nullptr) {
-			file << currentPoint->getDataPoint()->getAxisX() << "-" << currentPoint->getDataPoint()->getAxisY() << "\n";
+			file << currentPoint->getDataPoint()->getAxisX() << "-" << currentPoint->getDataPoint()->getAxisY() << endl;
 			currentPoint = currentPoint->getPreviousNodePoint();
 		}
 		currentRoute = currentRoute->getPreviousNodeRoute();
@@ -22,9 +21,9 @@ void FileManager::saveRoute(std::string nameOfFile, RouteList& routeList){
 	file.close();
 }
 
-void FileManager::loadRoute(std::string nameOfFile, RouteList& routeList){
-	std::ifstream file("resources/File/" + nameOfFile + ".txt");
-	std::string line;
+void FileManager::loadRoute(string nameOfFile, RouteList& routeList) {
+	ifstream file("resources" + nameOfFile + ".txt");
+	string line;
 	bool routeStarted = false;
 	Route* currentRoute = nullptr;
 	if (!file.is_open()) {
@@ -37,8 +36,8 @@ void FileManager::loadRoute(std::string nameOfFile, RouteList& routeList){
 			routeList.addRouteInTheList(currentRoute);
 			continue;
 		}
-		std::stringstream ss(line);
-		std::string segment;
+		stringstream ss(line);
+		string segment;
 		int positionX;
 		int positionY;
 		getline(ss, segment, '-');

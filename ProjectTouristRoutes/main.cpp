@@ -2,8 +2,9 @@
 #include "Map.h"
 
 int main(){
-    Map map;
-    map.run();
+	Map* map = new Map();
+	map->showWindow();
+	delete map;
 
     return 0;
 }

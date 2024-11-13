@@ -1,6 +1,5 @@
 #include "RouteList.h"
 
-
 RouteList::RouteList() :head(nullptr), tail(nullptr) {}
 
 RouteList::~RouteList() {

@@ -8,7 +8,6 @@ private:
 
 public:
 	FileManager();
-	void saveRoute(std::string nameOfFile, RouteList& routeList);
-	void loadRoute(std::string nameOfFile, RouteList& routeList);
+	void saveRoute(string nameOfFile, RouteList& routeList);
+	void loadRoute(string nameOfFile, RouteList& routeList);
 };
-

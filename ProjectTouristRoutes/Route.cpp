@@ -1,5 +1,5 @@
 #include "Route.h"
-
+using namespace sf;
 Route::Route() : head(nullptr), tail(nullptr) {}
 
 Route::~Route() {

@@ -1,7 +1,6 @@
 #pragma once
 #include "NodeRoute.h"
-
-class RouteList{
+class RouteList {
 private:
 	NodeRoute* head;
 	NodeRoute* tail;
@@ -16,4 +15,3 @@ public:
 	void removeLast(NodeRoute* current);
 	void removeRouteOfTheList(Route* route);
 };
-

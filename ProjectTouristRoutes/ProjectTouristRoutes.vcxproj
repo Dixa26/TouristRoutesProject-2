@@ -131,7 +131,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Button.cpp" />
+    <ClCompile Include="ColorPalette.cpp" />
     <ClCompile Include="FileManager.cpp" />
+    <ClCompile Include="GraphicPoint.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="NodePoint.cpp" />
@@ -142,7 +144,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Button.h" />
+    <ClInclude Include="ColorPalette.h" />
     <ClInclude Include="FileManager.h" />
+    <ClInclude Include="GraphicPoint.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="NodePoint.h" />
     <ClInclude Include="NodeRoute.h" />

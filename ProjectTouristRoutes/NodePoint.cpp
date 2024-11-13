@@ -29,3 +29,4 @@ Point* NodePoint::getDataPoint() {
 void NodePoint::setDataPoint(Point* data) {
 	dataPoint = data;
 }
+

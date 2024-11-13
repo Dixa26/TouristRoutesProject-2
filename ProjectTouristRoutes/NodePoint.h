@@ -1,7 +1,7 @@
 #pragma once
 #include "Point.h"
 
-class NodePoint{
+class NodePoint {
 private:
 	NodePoint* next;
 	NodePoint* previous;
@@ -17,4 +17,3 @@ public:
 	Point* getDataPoint();
 	void setDataPoint(Point* data);
 };
-

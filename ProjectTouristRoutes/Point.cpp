@@ -1,4 +1,5 @@
 #include "Point.h"
+
 Point::Point(float axisX, float axisY) :xAxis(axisX), yAxis(axisY) {}
 
 float Point::getAxisX() {
