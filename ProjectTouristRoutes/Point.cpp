@@ -1,11 +1,11 @@
 #include "Point.h"
 
-Point::Point(float axisX, float axisY) :xAxis(axisX), yAxis(axisY) {}
+Point::Point(float pX, float pY) :x(pX), y(pY) {}
 
-float Point::getAxisX() {
-	return xAxis;
+float Point::getX() {
+	return x;
 }
 
-float Point::getAxisY() {
-	return yAxis;
+float Point::getY() {
+	return y;
 }

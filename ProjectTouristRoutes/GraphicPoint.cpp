@@ -13,14 +13,14 @@ void GraphicPoint::drawColor(RenderWindow& window, Event eventOfColor) {
 void GraphicPoint::drawPoint(RenderWindow& window, NodePoint* tail) {
 	NodePoint* current = tail;
 	while (current != nullptr) {
-		circlePoint.setPosition(current->getDataPoint()->getAxisX(), current->getDataPoint()->getAxisY());
+		circlePoint.setPosition(current->getDataPoint()->getX(), current->getDataPoint()->getY());
 		circlePoint.setFillColor(color);
 		window.draw(circlePoint);
 		current = current->getPreviousNodePoint();
 	}
 }
 
-void GraphicPoint::drawLineBetweenPoint(RenderWindow& window, NodePoint* tail) {
+void GraphicPoint::drawInterpolation(RenderWindow& window, NodePoint* tail) {
 	int size = 0;
 	NodePoint* current = tail;
 	while (current != nullptr) {
@@ -31,7 +31,7 @@ void GraphicPoint::drawLineBetweenPoint(RenderWindow& window, NodePoint* tail) {
 	Vector2f* points = new sf::Vector2f[size];
 	current = tail;
 	for (int i = size - 1; i >= 0; i--) {
-		points[i] = sf::Vector2f(current->getDataPoint()->getAxisX(), current->getDataPoint()->getAxisY());
+		points[i] = sf::Vector2f(current->getDataPoint()->getX(), current->getDataPoint()->getY());
 		current = current->getPreviousNodePoint();
 	}
 	
@@ -58,9 +58,6 @@ void GraphicPoint::drawLineBetweenPoint(RenderWindow& window, NodePoint* tail) {
 	window.draw(spline);
 
 	delete[] points;
-
-
-
 }
 
 void GraphicPoint::drawPointOfTheRouteList(RenderWindow& window, NodeRoute* tail) {
@@ -68,7 +65,7 @@ void GraphicPoint::drawPointOfTheRouteList(RenderWindow& window, NodeRoute* tail
 	while (currentNode != nullptr) {
 		NodePoint* currentPoint = currentNode->getDataRoute()->getTail();
 		while (currentPoint != nullptr) {
-			circlePoint.setPosition(currentPoint->getDataPoint()->getAxisX(), currentPoint->getDataPoint()->getAxisY());
+			circlePoint.setPosition(currentPoint->getDataPoint()->getX(), currentPoint->getDataPoint()->getY());
 			window.draw(circlePoint);
 			currentPoint = currentPoint->getPreviousNodePoint();
 		}
@@ -80,14 +77,14 @@ void GraphicPoint::drawLineOfTheRouteList(RenderWindow& window, NodeRoute* tail)
 	NodeRoute* currentNode = tail;
 	while (currentNode != nullptr) {
 		NodePoint* currentPoint = currentNode->getDataRoute()->getTail();
-		drawLineBetweenPoint(window, currentPoint);
+		drawInterpolation(window, currentPoint);
 		currentNode = currentNode->getPreviousNodeRoute();
 	}
 }
 
 void GraphicPoint::drawRoute(RenderWindow& window, NodePoint* tail) {
 	drawPoint(window, tail);
-	drawLineBetweenPoint(window, tail);
+	drawInterpolation(window, tail);
 }
 
 void GraphicPoint::drawRouteList(RenderWindow& window, NodeRoute* tail) {
@@ -98,8 +95,8 @@ void GraphicPoint::drawRouteList(RenderWindow& window, NodeRoute* tail) {
 void GraphicPoint::removePointOfRoute(Vector2i& mousePosition, Route& route) {
 	NodePoint* current = route.getTail();
 	while (current != nullptr) {
-		float distance = sqrt(pow(mousePosition.x - current->getDataPoint()->getAxisX(), 2) +
-			pow(mousePosition.y - current->getDataPoint()->getAxisY(), 2));
+		float distance = sqrt(pow(mousePosition.x - current->getDataPoint()->getX(), 2) +
+			pow(mousePosition.y - current->getDataPoint()->getY(), 2));
 		if (distance < distanceOfMause) {
 			route.removePoint(current->getDataPoint());
 			return;
@@ -122,8 +119,8 @@ void GraphicPoint::removeRoute(Vector2i& mousePosition, RouteList& routeList) {
 	while (currentNode != nullptr) {
 		NodePoint* currentPoint = currentNode->getDataRoute()->getTail();
 		while (currentPoint != nullptr) {
-			float distance = sqrt(pow(mousePosition.x - currentPoint->getDataPoint()->getAxisX(), 2) +
-				pow(mousePosition.y - currentPoint->getDataPoint()->getAxisY(), 2));
+			float distance = sqrt(pow(mousePosition.x - currentPoint->getDataPoint()->getX(), 2) +
+				pow(mousePosition.y - currentPoint->getDataPoint()->getY(), 2));
 			if (distance < distanceOfMause) {
 				routeList.removeRouteOfTheList(currentNode->getDataRoute());
 				return;

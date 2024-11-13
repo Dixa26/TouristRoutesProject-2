@@ -1,6 +1,7 @@
 #include "FileManager.h"
 
 FileManager::FileManager() {
+	
 }
 
 void FileManager::saveRoute(string nameOfFile, RouteList& routeList) {
@@ -13,7 +14,7 @@ void FileManager::saveRoute(string nameOfFile, RouteList& routeList) {
 		NodePoint* currentPoint = currentRoute->getDataRoute()->getTail();
 		file << "Route" << endl;
 		while (currentPoint != nullptr) {
-			file << currentPoint->getDataPoint()->getAxisX() << "-" << currentPoint->getDataPoint()->getAxisY() << endl;
+			file << currentPoint->getDataPoint()->getX() << "-" << currentPoint->getDataPoint()->getY() << endl;
 			currentPoint = currentPoint->getPreviousNodePoint();
 		}
 		currentRoute = currentRoute->getPreviousNodeRoute();

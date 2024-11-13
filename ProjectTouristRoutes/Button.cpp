@@ -10,7 +10,7 @@ Button::Button() {
 	for (int i = 0; i < quantityOfButton; i++) {
 		button[i].setFillColor(Color::White);
 		button[i].setSize(Vector2f(broad, alture));
-		button[i].setPosition(1050, 80 + i * 90);
+		button[i].setPosition(1050, 70 + i * 90);
 		text[i].setFont(font);
 		text[i].setFillColor(Color::Black);
 		text[i].setCharacterSize(30);

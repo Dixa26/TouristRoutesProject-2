@@ -1,7 +1,7 @@
 #include "ColorPalette.h"
 
 ColorPalette::ColorPalette() {
-
+    fillColor();
 }
 
 void ColorPalette::fillColor() {

@@ -16,7 +16,7 @@ public:
 	GraphicPoint();
 	void drawColor(RenderWindow& window, Event eventOfColor);
 	void drawPoint(RenderWindow& window, NodePoint* tail);
-	void drawLineBetweenPoint(RenderWindow& window, NodePoint* tail);
+	void drawInterpolation(RenderWindow& window, NodePoint* tail);
 	void drawPointOfTheRouteList(RenderWindow& window, NodeRoute* tail);
 	void drawLineOfTheRouteList(RenderWindow& window, NodeRoute* tail);
 	void drawRoute(RenderWindow& window, NodePoint* tail);

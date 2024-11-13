@@ -5,10 +5,10 @@ using namespace std;
 using namespace sf;
 class Point {
 private:
-	float xAxis = 0.0;
-	float yAxis = 0.0;
+	float x = 0.0;
+	float y = 0.0;
 public:
-	Point(float axisX, float axisY);
-	float getAxisX();
-	float getAxisY();
+	Point(float pX, float pY);
+	float getX();
+	float getY();
 };
