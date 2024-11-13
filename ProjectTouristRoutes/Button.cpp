@@ -10,11 +10,11 @@ Button::Button() {
 	for (int i = 0; i < quantityOfButton; i++) {
 		button[i].setFillColor(Color::White);
 		button[i].setSize(Vector2f(broad, alture));
-		button[i].setPosition(1050, 70 + i * 90);
+		button[i].setPosition(1050, 80 + i * 90);
 		text[i].setFont(font);
 		text[i].setFillColor(Color::Black);
 		text[i].setCharacterSize(30);
-		text[i].setPosition(1050, 70 + i * 90);
+		text[i].setPosition(1050, 80 + i * 90);
 	}
 	writeTextOfButton();
 }
@@ -115,7 +115,7 @@ bool Button::isRemoveRoute() {
 
 void Button::writeTextOfButton() {
 	text[0].setString("Agregar ruta");
-	text[1].setString("Terminar de agregar botones");
+	text[1].setString("Terminar ruta");
 	text[2].setString("Eliminar punto");
 	text[3].setString("Eliminar ruta");
 	text[4].setString("Guardar ruta");

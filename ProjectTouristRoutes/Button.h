@@ -9,7 +9,7 @@ class Button {
 private:
 	int const static quantityOfButton = 7;
 	RectangleShape button[quantityOfButton];
-	float broad = 200.0;
+	float broad = 250.0;
 	float alture = 50.0;
 	Font font;
 	Text text[quantityOfButton];
