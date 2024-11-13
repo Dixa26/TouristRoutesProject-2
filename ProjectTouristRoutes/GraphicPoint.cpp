@@ -21,15 +21,53 @@ void GraphicPoint::drawPoint(RenderWindow& window, NodePoint* tail) {
 }
 
 void GraphicPoint::drawLineBetweenPoint(RenderWindow& window, NodePoint* tail) {
-	VertexArray line(LineStrip);
+	int size = 0;
 	NodePoint* current = tail;
 	while (current != nullptr) {
-		Vector2f position = Vector2f(current->getDataPoint()->getAxisX(), current->getDataPoint()->getAxisY());
-		Vertex point(position, Color::Black);
-		line.append(point);
+		size++;
 		current = current->getPreviousNodePoint();
 	}
-	window.draw(line);
+
+	//if (size < 4) {
+	//	return; // Se necesitan al menos cuatro puntos para la interpolación cúbica segmentaria
+	//}
+
+	// Paso 2: Crear el arreglo dinámico y recolectar los puntos
+	sf::Vector2f* points = new Vector2f[size];
+	current = tail;
+	for (int i = size - 1; i >= 0; i--) {
+		points[i] = sf::Vector2f(current->getDataPoint()->getAxisX(), current->getDataPoint()->getAxisY());
+		current = current->getPreviousNodePoint();
+	}
+
+	// Paso 3: Crear la curva usando interpolación cúbica segmentaria
+	sf::VertexArray spline(sf::LineStrip);
+
+	for (int i = 1; i < size - 2; i++) {
+		sf::Vector2f p0 = points[i - 1];
+		sf::Vector2f p1 = points[i];
+		sf::Vector2f p2 = points[i + 1];
+		sf::Vector2f p3 = points[i + 2];
+
+		for (float t = 0; t <= 1; t += 0.05f) { // Ajusta la precisión de la curva
+			float t2 = t * t;
+			float t3 = t2 * t;
+
+			sf::Vector2f interpolatedPoint =
+				0.5f * ((2.0f * p1) +
+					(-p0 + p2) * t +
+					(2.0f * p0 - 5.0f * p1 + 4.0f * p2 - p3) * t2 +
+					(-p0 + 3.0f * p1 - 3.0f * p2 + p3) * t3);
+
+			spline.append(sf::Vertex(interpolatedPoint, sf::Color::Black));
+		}
+	}
+
+	// Dibujar la curva
+	window.draw(spline);
+
+	// Paso 4: Liberar memoria
+	delete[] points;
 }
 
 void GraphicPoint::drawPointOfTheRouteList(RenderWindow& window, NodeRoute* tail) {

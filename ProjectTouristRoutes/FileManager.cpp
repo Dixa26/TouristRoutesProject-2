@@ -4,7 +4,7 @@ FileManager::FileManager() {
 }
 
 void FileManager::saveRoute(string nameOfFile, RouteList& routeList) {
-	ofstream file("resources" + nameOfFile + ".txt");
+	ofstream file("Resources/file/" + nameOfFile + ".txt");
 	if (!file.is_open()) {
 		throw("The file cannot open");
 	}
@@ -22,7 +22,7 @@ void FileManager::saveRoute(string nameOfFile, RouteList& routeList) {
 }
 
 void FileManager::loadRoute(string nameOfFile, RouteList& routeList) {
-	ifstream file("resources" + nameOfFile + ".txt");
+	ifstream file("Resources/file/" + nameOfFile + ".txt");
 	string line;
 	bool routeStarted = false;
 	Route* currentRoute = nullptr;

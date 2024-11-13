@@ -11,6 +11,7 @@ private:
 	Color color;
 	float distanceOfMause = 10.0f;
 	FileManager file;
+
 public:
 	GraphicPoint();
 	void drawColor(RenderWindow& window, Event eventOfColor);
